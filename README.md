@@ -1,5 +1,8 @@
 # crud
 
+## Project image 
+![home](https://user-images.githubusercontent.com/73382973/131217081-f5981ddd-8832-4329-8937-f37cdf095a73.PNG)
+
 ## Project setup
 ```
 npm install
