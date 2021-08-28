@@ -69,9 +69,9 @@ export default {
     const createDate = unix_time / 1000;
 
     return {
-      products: [],
-      pTypes: [],
       id: "",
+      pTypes: [],
+      products: [],
       selected: "Select your product type",
       formData: {
         product_type_id: "",
@@ -86,6 +86,7 @@ export default {
     'Convert': Convert
   },
   methods: {
+    // Bu funksiyada hamma Malumotlani chaqirganman! 
     async getAllData() {
       await axios.get("http://94.158.54.194:9092/api/product")
         .then((res) => {
@@ -95,12 +96,11 @@ export default {
           console.log(err.message);
         });
     },
-
+    // Bu funksiyada select da tanlangan id ni oladi!
     changeValue(e) {
       this.formData.product_type_id = e.target.value;
-      // console.log(e.target.value, "Ahmoq!");
     },
-
+    // Bu funksiyada mahsulot turi nomini selectga yuborish uchun foydalanilgan!
     async getTypeData() {
       await axios.get("http://94.158.54.194:9092/api/product/get-product-types")
         .then((res) => {
@@ -110,7 +110,7 @@ export default {
           console.log(err.message);
         });
     },
-
+    // Bu funksiyada mahsulot haqida malumot creat qilingan!
     async createPost() {
       await axios.post("http://94.158.54.194:9092/api/product", this.formData)
         .then(() => {
@@ -120,6 +120,7 @@ export default {
           console.error(err.message);
         });
     },
+    // Bu funksiyada keraksiz mahsulotni o'chirib tashlash uchun foydalanilgan!
     async deleteProduct(id) {
       await axios.delete("http://94.158.54.194:9092/api/product/"+id)
         .then(() => {
@@ -129,6 +130,7 @@ export default {
           console.error(err.message);
         })
     },
+    // Bu funksiyada aniq bir mahsulotni ayrim malumotlarini yangilash uchun foydalanilgan!
     async updateProduct(id) {
       let newOBJ = {...this.formData, ...{id:id}}
       await axios.put("http://94.158.54.194:9092/api/product", newOBJ)
@@ -140,7 +142,7 @@ export default {
           console.error(err);
         })
     },
-
+    // Bu funksiyada malum bir mahsulot turi haqidagi malumotlarni inputlaga yo'naltirilgan!   
     async getInputData(id, p, n, c, a) {
       this.formData.product_type_id = p;
       this.formData.name_uz = n;
@@ -155,7 +157,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped> /* Bu yerda style uchun yozilgan mahsus codela bor! */
 * {
   margin: 0;
   padding: 0;
